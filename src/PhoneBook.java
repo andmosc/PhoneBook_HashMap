@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class PhoneBook {
-    private Map<String, List<Contact>> map = new HashMap<>();
+    private final Map<String, List<Contact>> map = new HashMap<>();
 
     public void addNewGroup(String nameGroup) {
         if (!map.containsKey(nameGroup))
@@ -16,8 +16,7 @@ public class PhoneBook {
                 map.get(s).add(contact);
         }
     }
-
-    public Contact searchContact(int number) {
+    public Contact  searchContact(int number) {
         System.out.println("\nПоиcк по номеру телефона: " + number);
         for (List<Contact> contactList : map.values()) {
             for (Contact contact : contactList) {
@@ -33,7 +32,7 @@ public class PhoneBook {
 
     public List<Contact> searchGroup(String group) {
         System.out.println("\nВсе контакты группы: " + group);
-        return map.get(group);
+        return new ArrayList<>(map.get(group));
     }
 
     public void showAllGroups() {
